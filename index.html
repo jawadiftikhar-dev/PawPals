@@ -1,13 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pawpals</title>
+    <meta name="description" content="PawPals Pet Clinic — caring for your pets, online and offline." />
+    <title>PawPals Pet Clinic — Care for Every Paw</title>
+    <link rel="stylesheet" href="/src/styles/main.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <header class="site-header">
+      <a href="/" class="logo" aria-label="PawPals home">
+        <img src="/pawpals-logo.svg" alt="" width="40" height="40" />
+        <span>PawPals</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" aria-current="page">Home</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/appointment.html">Book Appointment</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <h1>Care for every paw 🐾</h1>
+          <p>Your neighbourhood pet clinic — book appointments anytime, even offline.</p>
+          <a href="/appointment.html" class="btn-primary">Book an appointment</a>
+        </div>
+        <img
+          class="hero-image"
+          src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800"
+          alt="A happy dog and cat sitting together"
+          loading="lazy"
+        />
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 PawPals Pet Clinic</p>
+    </footer>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
