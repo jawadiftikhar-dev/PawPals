@@ -1,133 +1,192 @@
+/* ============================================================
+   PawPals Pet Clinic — Global Styles
+   ============================================================ */
+
+/* ---------- Design tokens ---------- */
 :root {
-  --green: #2e7d6b;
-  --dark-green: #1f5a4d;
-  --text: #1a1a1a;
-  --muted: #5f6b68;
-  --background: #fdfdfb;
+  --color-primary: #2e7d6b;
+  --color-primary-dark: #1f5a4d;
+  --color-bg: #fdfdfb;
+  --color-surface: #ffffff;
+  --color-border: #e6e6e6;
+  --color-text: #1a1a1a;
+  --color-muted: #5f6b68;
+  --radius: 12px;
+  --space: 1rem;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
-* {
+/* ---------- Reset / base ---------- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  background: var(--background);
-  color: var(--text);
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-primary-dark);
+}
+
+/* ---------- Layout wrapper ---------- */
+#app {
+  flex: 1;
+}
+
+/* ============================================================
+   Site header (app shell)
+   ============================================================ */
 .site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  background: #fff;
-  border-bottom: 1px solid #e6e6e6;
+  flex-wrap: wrap;
+  gap: var(--space);
+  padding: var(--space) 2rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
   position: sticky;
   top: 0;
   z-index: 10;
+  box-shadow: var(--shadow-sm);
 }
 
 .logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--dark-green);
-  font-size: 1.25rem;
   font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary-dark);
   text-decoration: none;
 }
 
 .logo img {
-  display: block;
+  display: inline-block;
 }
 
-.main-nav {
+.nav-list {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.main-nav a {
-  padding: 0.5rem 0.75rem;
-  color: var(--text);
-  border-radius: 8px;
+.nav-list a {
   text-decoration: none;
+  color: var(--color-text);
   font-weight: 500;
-  transition: 0.2s ease;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
-.main-nav a:hover,
-.main-nav a:focus-visible {
-  color: var(--dark-green);
+.nav-list a:hover,
+.nav-list a:focus-visible {
+  background: #eef5f2;
+  color: var(--color-primary-dark);
+}
+
+.nav-list a[aria-current='page'] {
+  color: var(--color-primary);
   background: #eef5f2;
 }
 
-.main-nav a.active {
-  color: var(--green);
-}
-
-/* Hero */
+/* ============================================================
+   Hero (Home page)
+   ============================================================ */
 .hero {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
+  padding: 3rem 2rem;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 4rem 2rem;
 }
 
-.hero-content {
-  flex: 1;
+.hero-text {
+  flex: 1 1 320px;
 }
 
-.hero-content h1 {
-  margin: 0 0 1rem;
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-  line-height: 1.15;
+.hero-text h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
 }
 
-.hero-content p {
-  max-width: 550px;
-  margin: 0 0 1.5rem;
-  color: var(--muted);
+.hero-text p {
+  color: var(--color-muted);
   font-size: 1.1rem;
+  margin-bottom: 1.5rem;
 }
 
+.hero-image {
+  flex: 1 1 320px;
+  max-width: 500px;
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
 .btn-primary {
   display: inline-block;
-  padding: 0.75rem 1.4rem;
-  background: var(--green);
+  background: var(--color-primary);
   color: #fff;
-  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: inherit;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
 }
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  background: var(--dark-green);
+  background: var(--color-primary-dark);
 }
 
-.hero-media {
-  flex: 1;
+.btn-primary:active {
+  transform: translateY(1px);
 }
 
-.hero-media img {
-  display: block;
-  width: 100%;
-  max-width: 520px;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-/* Page container for non-hero pages */
+/* ============================================================
+   Page container (Services, Appointment, 404)
+   ============================================================ */
 .page {
   max-width: 800px;
   margin: 0 auto;
@@ -137,13 +196,16 @@ body {
 .page h1 {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   margin-top: 0;
+  line-height: 1.2;
 }
 
-.page-not-found {
-  text-align: center;
+.page > p {
+  color: var(--color-muted);
 }
 
-/* Services list */
+/* ============================================================
+   Services page
+   ============================================================ */
 .service-list {
   list-style: none;
   padding: 0;
@@ -154,10 +216,18 @@ body {
 }
 
 .service-list li {
-  background: white;
-  border: 1px solid #e6e6e6;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 1.25rem;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.service-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .service-list h2 {
@@ -171,7 +241,9 @@ body {
   color: var(--color-muted);
 }
 
-/* Appointment form */
+/* ============================================================
+   Appointment form
+   ============================================================ */
 .appointment-form {
   display: grid;
   gap: 1rem;
@@ -190,26 +262,60 @@ body {
   border: 1px solid #ccc;
   border-radius: var(--radius);
   font: inherit;
-  background: white;
+  background: var(--color-surface);
+  color: var(--color-text);
 }
 
 .appointment-form input:focus-visible,
 .appointment-form textarea:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+  border-color: var(--color-primary);
 }
 
-/* Focus outline for the app outlet when route changes */
+.appointment-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.appointment-form button {
+  justify-self: start;
+}
+
+/* ============================================================
+   404 page
+   ============================================================ */
+.page-not-found {
+  text-align: center;
+}
+
+.page-not-found h1 {
+  color: var(--color-primary-dark);
+}
+
+/* ============================================================
+   Footer (app shell)
+   ============================================================ */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+/* ============================================================
+   Focus / accessibility
+   ============================================================ */
 #app:focus-visible {
   outline: none;
 }
 
-/* Mobile: keep the nav usable */
+/* ============================================================
+   Responsive
+   ============================================================ */
 @media (max-width: 640px) {
-  .page {
-    padding: 2rem 1rem;
-  }
-
   .site-header {
     padding: 1rem;
   }
@@ -218,44 +324,22 @@ body {
     gap: 0.5rem;
     font-size: 0.9rem;
   }
-}
-
-/* Footer */
-.site-footer {
-  padding: 2rem;
-  color: var(--muted);
-  text-align: center;
-  font-size: 0.9rem;
-}
-
-/* Mobile */
-@media (max-width: 640px) {
-  .site-header {
-    padding: 1rem;
-  }
-
-  .main-nav {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .main-nav a {
-    font-size: 0.9rem;
-  }
 
   .hero {
     flex-direction: column-reverse;
-    gap: 2rem;
-    padding: 2.5rem 1rem;
+    padding: 2rem 1rem;
     text-align: center;
   }
 
-  .hero-content p {
-    margin-left: auto;
-    margin-right: auto;
+  .hero-text .btn-primary {
+    display: inline-block;
   }
 
-  .hero-media img {
-    margin: 0 auto;
+  .page {
+    padding: 2rem 1rem;
+  }
+
+  .service-list {
+    grid-template-columns: 1fr;
   }
 }
