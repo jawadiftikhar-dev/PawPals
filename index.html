@@ -6,20 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="PawPals Pet Clinic — caring for your pets, online and offline." />
   <title>PawPals Pet Clinic</title>
-  <link rel="shortcut icon" href="/pawpals-logo.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="/pawpals-logo.svg" type="image/svg+xml">
 </head>
 
 <body>
   <header class="site-header">
-    <a href="/" class="logo" data-link aria-label="PawPals home">
+    <a href="/PawPals/" class="logo" data-link aria-label="PawPals home">
       <img src="/pawpals-logo.svg" alt="" width="40" height="40" />
       <span>PawPals</span>
     </a>
     <nav aria-label="Main navigation">
       <ul class="nav-list">
-        <li><a href="/" data-link>Home</a></li>
-        <li><a href="/services" data-link>Services</a></li>
-        <li><a href="/appointment" data-link>Book Appointment</a></li>
+        <li><a href="/PawPals/" data-link>Home</a></li>
+        <li><a href="/PawPals/services" data-link>Services</a></li>
+        <li><a href="/PawPals/appointment" data-link>Book Appointment</a></li>
       </ul>
     </nav>
   </header>
@@ -31,12 +31,13 @@
   </footer>
 
   <script type="module" src="src/main.js"></script>
-  <script>
+<script>
   (function () {
     var redirect = sessionStorage.getItem('redirect');
     sessionStorage.removeItem('redirect');
     if (redirect && redirect !== location.href) {
-      history.replaceState(null, '', redirect);
+      var path = new URL(redirect).pathname;
+      history.replaceState(null, '', path);
       window.dispatchEvent(new PopStateEvent('popstate'));
     }
   })();

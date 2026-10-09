@@ -1,40 +1,51 @@
 // src/router.js
 
+const BASE = import.meta.env.BASE_URL; // '/PawPals/' in prod, '/' in dev
 const routes = new Map();
 
-/**
- * Register a route. `path` must start with "/".
- * `view` is a function that returns an HTML string.
- */
+/** Register a route. `path` must start with "/". */
 export function addRoute(path, view) {
   routes.set(path, view);
 }
 
-/** Navigate programmatically without a full reload. */
+/** Convert an absolute URL path into a router-internal path. */
+function toInternalPath(rawPath) {
+  if (rawPath.startsWith(BASE)) {
+    const trimmed = '/' + rawPath.slice(BASE.length);
+    return trimmed.replace(/\/$/, '') || '/';
+  }
+  return rawPath;
+}
+
+/** Build a full URL path from an internal route path. */
+function toFullPath(internalPath) {
+  const base = BASE.replace(/\/$/, ''); // strip trailing slash
+  return internalPath === '/' ? base + '/' : base + internalPath;
+}
+
 export function navigate(path) {
-  if (path === window.location.pathname) return;
-  window.history.pushState({}, '', path);
+  const fullPath = toFullPath(path);
+  if (fullPath === window.location.pathname) return;
+  window.history.pushState({}, '', fullPath);
   render();
 }
 
-/** Resolve the current URL and render the matching view into #app. */
 function render() {
   const outlet = document.querySelector('#app');
   if (!outlet) return;
 
-  const path = window.location.pathname;
+  const path = toInternalPath(window.location.pathname);
   const view = routes.get(path) ?? routes.get('*');
 
   outlet.innerHTML = view ? view() : '<h1>Page not found</h1>';
   updateActiveLink(path);
-  outlet.focus?.();
   document.title = titleFor(path);
 }
 
 function updateActiveLink(path) {
   document.querySelectorAll('[data-link]').forEach((link) => {
-    const isActive = new URL(link.href).pathname === path;
-    if (isActive) link.setAttribute('aria-current', 'page');
+    const linkPath = toInternalPath(new URL(link.href).pathname);
+    if (linkPath === path) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   });
 }
@@ -48,7 +59,6 @@ function titleFor(path) {
   return map[path] ?? 'Page not found — PawPals';
 }
 
-/** Intercept clicks on any [data-link] element. */
 function interceptLinks() {
   document.addEventListener('click', (e) => {
     const link = e.target.closest('a[data-link]');
@@ -56,11 +66,11 @@ function interceptLinks() {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
 
     e.preventDefault();
-    navigate(new URL(link.href).pathname);
+    const fullPath = new URL(link.href).pathname;
+    navigate(toInternalPath(fullPath));
   });
 }
 
-/** Boot the router. */
 export function startRouter() {
   interceptLinks();
   window.addEventListener('popstate', render);
