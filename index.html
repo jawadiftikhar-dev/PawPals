@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="PawPals Pet Clinic — caring for your pets, online and offline." />
   <title>PawPals Pet Clinic</title>
-  <link rel="shortcut icon" href="public/pawpals-logo.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="/pawpals-logo.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -30,7 +30,18 @@
     <p>&copy; 2026 PawPals Pet Clinic</p>
   </footer>
 
-  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="src/main.js"></script>
+  <script>
+  (function () {
+    var redirect = sessionStorage.getItem('redirect');
+    sessionStorage.removeItem('redirect');
+    if (redirect && redirect !== location.href) {
+      history.replaceState(null, '', redirect);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+  })();
+</script>
+
 </body>
 
 </html>

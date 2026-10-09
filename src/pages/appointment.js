@@ -6,11 +6,11 @@ export function appointmentPage() {
       <form class="appointment-form" novalidate>
         <label>
           Your name
-          <input type="text" name="name" required />
+          <input type="text" name="name" required placeholder="Your Name" />
         </label>
         <label>
           Pet name
-          <input type="text" name="pet" required />
+          <input type="text" name="pet" required placeholder="Pet Name" />
         </label>
         <label>
           Preferred date
@@ -18,7 +18,7 @@ export function appointmentPage() {
         </label>
         <label>
           Reason for visit
-          <textarea name="reason" rows="4"></textarea>
+          <textarea name="reason" rows="4" placeholder="Reason"></textarea>
         </label>
         <button type="submit" class="btn-primary">Request appointment</button>
       </form>
