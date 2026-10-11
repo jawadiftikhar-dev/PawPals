@@ -60,10 +60,26 @@
         <button type="submit" class="btn-primary">Request appointment</button>
       </form>
     </section>
-  `}function m(){return`
+  `}function m(){return setTimeout(h,0),`
+    <section class="page">
+      <h1>Pet Products</h1>
+      <p>Browse our recommended products. This list works offline after your first visit.</p>
+      <div id="products-status">Loading products…</div>
+      <ul id="products-list" class="service-list"></ul>
+    </section>
+  `}async function h(){let e=document.getElementById(`products-status`),t=document.getElementById(`products-list`);if(e&&t)try{let n=await fetch(`https://dummyjson.com/products?limit=6`);if(!n.ok)throw Error(`Bad response`);let r=await n.json();e.textContent=``,t.innerHTML=r.products.map(e=>`
+        <li>
+          <h2>${e.title}</h2>
+          <p>${e.description?.slice(0,80)??``}…</p>
+        </li>
+      `).join(``)}catch(t){e.innerHTML=`
+      <p style="color:#b3261e">
+        Couldn't load products. You may be offline and this data hasn't been cached yet.
+      </p>
+    `,console.error(t)}}function g(){return`
     <section class="page page-not-found">
       <h1>404 — Page not found</h1>
       <p>We couldn't find that page. Maybe one of our cats knocked it off the desk.</p>
       <a href="/" class="btn-primary" data-link>Back to Home</a>
     </section>
-  `}n(`/`,d),n(`/services`,f),n(`/appointment`,p),n(`*`,m),u();
+  `}var _=`modulepreload`,v=function(e){return`/PawPals/`+e},y={},b=function(e){return e.pathname.endsWith(`.css`)},x=function(e,t,n){let r=Promise.resolve();if(t&&t.length>0){let e,i=document.querySelector(`meta[property=csp-nonce]`),a=i?.nonce||i?.getAttribute(`nonce`);function o(e){return Promise.all(e.map(e=>Promise.resolve(e).then(e=>({status:`fulfilled`,value:e}),e=>({status:`rejected`,reason:e}))))}function s(e){return import.meta.resolve?new URL(import.meta.resolve(e)):new URL(e,import.meta.url)}r=o(t.map(t=>{t=v(t,n);let r=s(t);if(r.href in y)return;y[r.href]=!0;let i=b(r);if(e===void 0){e={all:new Set,styles:new Set};let t=document.getElementsByTagName(`link`);for(let n=t.length-1;n>=0;n--){let r=t[n];e.all.add(r.href),r.rel===`stylesheet`&&e.styles.add(r.href)}}if((i?e.styles:e.all).has(r.href))return;let o=document.createElement(`link`);if(o.rel=i?`stylesheet`:_,i||(o.as=`script`),o.crossOrigin=``,o.href=r.href,a&&o.setAttribute(`nonce`,a),document.head.appendChild(o),i)return new Promise((e,t)=>{o.addEventListener(`load`,e),o.addEventListener(`error`,()=>t(Error(`Unable to preload CSS for ${r}`)))})}).filter(e=>e!==void 0))}function i(e){let t=new Event(`vite:preloadError`,{cancelable:!0});if(t.payload=e,window.dispatchEvent(t),!t.defaultPrevented)throw e}return r.then(t=>{for(let e of t||[])e.status===`rejected`&&i(e.reason);return e().catch(i)})},S=`true`,C=`false`,w=S===`true`,T=C===`true`;function E(e={}){let{immediate:t=!1,onNeedReload:n,onNeedRefresh:r,onOfflineReady:i,onRegistered:a,onRegisteredSW:o,onRegisterError:s}=e,c,l,u,d=async(e=!0)=>{await l,w||u?.()};async function f(){if(`serviceWorker`in navigator){if(c=await x(async()=>{let{Workbox:e}=await import(`./workbox-window.prod.es5-Bd17z0YL.js`);return{Workbox:e}},[]).then(({Workbox:e})=>new e(`/PawPals/sw.js`,{scope:`/PawPals/`,type:`classic`})).catch(e=>{s?.(e)}),!c)return;if(u=()=>{c?.messageSkipWaiting()},!T){if(w)c.addEventListener(`activated`,e=>{(e.isUpdate||e.isExternal)&&(n?n():window.location.reload())}),c.addEventListener(`installed`,e=>{e.isUpdate||i?.()});else{let e=!1,t=()=>{e=!0,c?.addEventListener(`controlling`,e=>{e.isUpdate&&(n?n():window.location.reload())}),r?.()};c.addEventListener(`installed`,n=>{n.isUpdate===void 0?n.isExternal===void 0?!e&&i?.():n.isExternal?t():!e&&i?.():n.isUpdate||i?.()}),c.addEventListener(`waiting`,t)}}c.register({immediate:t}).then(e=>{o?o(`/PawPals/sw.js`,e):a?.(e)}).catch(e=>{s?.(e)})}}return l=f(),d}E({immediate:!0}),n(`/`,d),n(`/services`,f),n(`/appointment`,p),n(`/products`,m),n(`*`,g),u();

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offline — PawPals</title>
+    <style>
+      :root {
+        --primary: #2e7d6b;
+        --muted: #5f6b68;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+        background: #fdfdfb;
+        color: #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 2rem;
+      }
+      .offline-card {
+        max-width: 480px;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+      }
+      p {
+        color: var(--muted);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+      .btn {
+        display: inline-block;
+        background: var(--primary);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .btn:hover {
+        background: #1f5a4d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="offline-card">
+      <h1>You're offline 🐾</h1>
+      <p>
+        PawPals works offline for previously visited pages, but this one
+        hasn't been cached yet. Reconnect and try again.
+      </p>
+      <a href="/PawPals/" class="btn">Back to Home</a>
+    </div>
+  </body>
+</html>
