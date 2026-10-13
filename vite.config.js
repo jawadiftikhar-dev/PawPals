@@ -28,6 +28,7 @@ export default defineConfig({
         globPatterns: ['**/*.{html,js,css,svg,png,jpg,jpeg,ico,woff,woff2}'],
         navigateFallback: '/PawPals/offline.html',
         navigateFallbackDenylist: [/^\/api\//],
+        importScripts: ['/PawPals/sw-sync.js'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/dummyjson\.com\/products/i,
@@ -35,21 +36,13 @@ export default defineConfig({
             options: {
               cacheName: 'dummyjson-products',
               networkTimeoutSeconds: 5,
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 24 * 60 * 60, // 1 day
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
+              expiration: { maxEntries: 50, maxAgeSeconds: 24 * 60 * 60 },
+              cacheableResponse: { statuses: [0, 200] },
             },
           },
         ],
       },
-      devOptions: {
-        enabled: true,
-        type: 'module',
-      },
+      devOptions: { enabled: true, type: 'module' },
     }),
   ],
 });
