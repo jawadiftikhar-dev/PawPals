@@ -6,7 +6,7 @@ export function homePage() {
         <p>Your neighbourhood pet clinic — book appointments anytime, even offline.</p>
         <a href="/appointment" class="btn-primary" data-link>Book an appointment</a>
       </div>
-      <img class="hero-image" src="./public/pawpals-hero.avif"
+      <img class="hero-image" src="pawpals-hero.avif"
       alt="A happy dog and cat sitting together" width="600" height="400" decoding="async"
       fetchpriority="high" />
     </section>
