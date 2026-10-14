@@ -399,11 +399,12 @@ select[aria-invalid='true'] {
    ============================================================ */
 footer {
   text-align: center;
-  padding: 2rem;
   color: var(--color-muted);
-  font-size: 0.9rem;
   border-top: 1px solid var(--color-border);
   background: var(--color-surface);
+  padding: 2rem;
+  font-size: 0.9rem;
+  box-sizing: border-box;
 }
 
 /* ============================================================
