@@ -1,6 +1,6 @@
 // src/pages/appointment.js
 
-const WEBHOOK_URL = 'https://webhook.site/71106c06-83a9-4d36-b883-cba65a181f4e'; // Replace with your webhook.site URL
+const WEBHOOK_URL = 'https://webhook.site/71106c06-83a9-4d36-b883-cba65a181f4e'; // webhook.site URL
 const SYNC_TAG = 'booking-sync';
 
 export function appointmentPage() {
