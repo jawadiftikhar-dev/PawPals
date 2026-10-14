@@ -6,12 +6,9 @@ export function homePage() {
         <p>Your neighbourhood pet clinic — book appointments anytime, even offline.</p>
         <a href="/appointment" class="btn-primary" data-link>Book an appointment</a>
       </div>
-      <img
-        class="hero-image"
-        src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800"
-        alt="A happy dog and cat sitting together"
-        loading="lazy"
-      />
+      <img class="hero-image" src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800&q=75&auto=format"
+      alt="A happy dog and cat sitting together" width="600" height="400" loading="lazy" decoding="async"
+      fetchpriority="high" />
     </section>
   `;
 }

@@ -79,7 +79,7 @@ define(['./workbox-970124e6'], (function (workbox) { 'use strict';
    */
   workbox.precacheAndRoute([{
     "url": "/PawPals/offline.html",
-    "revision": "0.fok6dbkujos"
+    "revision": "0.sot2m8b33e8"
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("/PawPals/offline.html"), {
