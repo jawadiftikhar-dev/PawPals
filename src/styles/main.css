@@ -148,7 +148,7 @@ a {
 
 .nav-list a[aria-current='page'] {
   color: var(--color-primary);
-  background: #EAF3EF;
+  background: #F0F7F4;
 }
 
 /* Theme Toggle */
