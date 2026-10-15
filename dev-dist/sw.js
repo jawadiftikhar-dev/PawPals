@@ -79,10 +79,10 @@ define(['./workbox-970124e6'], (function (workbox) { 'use strict';
    */
   workbox.precacheAndRoute([{
     "url": "registerSW.js",
-    "revision": "72542d3daea5400a6547c4e17a2abc55"
+    "revision": "3ca0b8505b4bec776b69afdba2768812"
   }, {
     "url": "/PawPals/offline.html",
-    "revision": "0.2mlippgmk6s"
+    "revision": "0.a6a3856qgo8"
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("/PawPals/offline.html"), {
