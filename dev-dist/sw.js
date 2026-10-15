@@ -82,7 +82,7 @@ define(['./workbox-970124e6'], (function (workbox) { 'use strict';
     "revision": "72542d3daea5400a6547c4e17a2abc55"
   }, {
     "url": "/PawPals/offline.html",
-    "revision": "0.dbk6ngkvc6"
+    "revision": "0.2mlippgmk6s"
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("/PawPals/offline.html"), {
