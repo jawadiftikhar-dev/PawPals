@@ -13,10 +13,10 @@ uses a Workbox service worker for offline support, Background Sync for queued
 appointment requests, and a small History API router for client-side navigation.
 
 **Key features:**
-- Browse services and product listings (cached for offline use)
-- Book appointments with live validation and offline queueing
-- Dark mode toggle that persists across sessions
-- Installable as a home-screen app on mobile and desktop
+- Browse services and product listings (cached for offline use).
+- Book appointments with live validation and offline queueing.
+- Dark mode toggle that persists across sessions.
+- Installable as a home-screen app on mobile and desktop.
 
 ## Install
 
@@ -52,9 +52,9 @@ This project deploys to Netlify with continuous deployment from the `main`
 branch.
 
 **Configuration** (`netlify.toml`):
-- Build command: `npm run build`
-- Publish directory: `dist`
-- SPA redirect: all unknown paths serve `index.html` (status 200)
+- Build command: `npm run build`.
+- Publish directory: `dist`.
+- SPA redirect: all unknown paths serve `index.html` (status 200).
 
 **Manual deploy:**
 
@@ -91,18 +91,18 @@ and every push to `main` triggers a rebuild automatically.
     └── vite.config.js          # Vite + VitePWA config
 
 **Data flow:**
-- The router intercepts `[data-link]` clicks and calls `pushState`
-- Pages are pure functions returning HTML strings
-- The service worker precaches all static assets on install
-- Failed form submissions are written to IndexedDB and replayed on sync
+- The router intercepts `[data-link]` clicks and calls `pushState`.
+- Pages are pure functions returning HTML strings.
+- The service worker precaches all static assets on install.
+- Failed form submissions are written to IndexedDB and replayed on sync.
 
 ## Future Work
 
-- Replace the dummy product API with a real backend
-- Add email confirmation via a serverless function
-- Support multiple languages
-- Add an admin dashboard for managing appointments
-- Improve test coverage to include the service worker itself
+- Replace the dummy product API with a real backend.
+- Add email confirmation via a serverless function.
+- Support multiple languages.
+- Add an admin dashboard for managing appointments.
+- Improve test coverage to include the service worker itself.
 
 ## License
 
